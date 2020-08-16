@@ -61,6 +61,8 @@ def match_value(pattern, value) -> Tuple[bool, List]:
         return False, []
     elif is_typing_stuff(pattern):
         return match_typing_stuff(pattern, value)
+    elif pattern == value:
+        return True, [value]
     elif isinstance(pattern, (int, float, str, bool, Enum)):
         eq = pattern == value
         type_eq = type(pattern) == type(value)
